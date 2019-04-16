@@ -1,0 +1,230 @@
+package demo;
+
+//import java.util.ArrayList;
+import java.util.Scanner;
+
+
+/*
+** DNA **
+
+题目描述
+小强从小就喜欢生命科学，他总是好奇花草鸟兽从哪里来的。终于， 小强上中学了，接触到了神圣的名词--DNA.它有一个双螺旋的结构。这让一根筋的小强抓破头皮，“要是能画出来就好了” 小强喊道。现在就请你帮助他吧。
+行数为3的DNA可以画作
+X X
+ X 
+X X
+行数为7的DNA则可以画作
+X     X
+ X   X
+  X X
+   X
+  X X
+ X   X
+X     X
+
+输入
+输入包含多组测试数据。第一个整数N（N<=15）,N表示组数，每组数据包含两个整数a,b。a表示一个单位的DNA串的行数，a为奇数且 3<=a<=39。b表示重复度(1<=b<=20)。
+
+输出
+输出DNA的形状，每组输出间有一空行。
+
+样例输入
+2
+3 1
+5 4
+
+样例输出
+X X
+ X
+X X
+
+X   X
+ X X
+  X
+ X X
+X   X
+ X X
+  X
+ X X
+X   X
+ X X
+  X
+ X X
+X   X
+ X X
+  X
+ X X
+X   X
+*/
+public class DNA {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int n = scanner.nextInt();  //表示组数
+		
+		
+		//a表示一个单位的DNA串的行数, a为奇数且 3<=a<=39. b表示重复度(1<=b<=20)
+		int[] inputA = new int[n];	//存放a
+		int[] inputB = new int[n];	//存放b
+		
+		for (int i = 0; i < n; i++) {
+			inputA[i] = scanner.nextInt();
+			inputB[i] = scanner.nextInt();
+		}
+		scanner.close();
+
+	}
+	
+	public static void PrintLine(int length) {
+		//length表示长度, 这个方法用来实现打印行.
+		
+	}
+}
+		
+		
+		
+		
+/**
+ * 看看自己写的烂代码!!!
+ * 看看自己写的烂代码!!!
+ * 看看自己写的烂代码!!!
+ * 看看自己写的烂代码!!!
+ * 看看自己写的烂代码!!!
+ * */
+//		for (int i = 0; i < inputA.length; i++) {
+//			//第一行
+//			char[] arrayOne = new char[inputA[i]];
+//			for (int j = 0; j < arrayOne.length; j++) {	
+//				if (j == 0) {
+//					arrayOne[j] = 'X';
+//				} else if (j == arrayOne.length - 1) {
+//					arrayOne[arrayOne.length - 1] = 'X';
+//				} else {
+//					arrayOne[j] = ' ';
+//				}
+//			}
+//			
+//			//主体部分
+//			ArrayList<StringBuilder> array = new ArrayList<>();
+//			for (int j = 0; j < inputA[i] - 1; j++) {
+//				array.add(new StringBuilder());
+//			}
+//			
+//			//h是行号
+//			for (int h = 1; h < array.size(); h++) {
+//				if (h < inputA[i] / 2) {
+//					//添加第一段空格
+//					int space = 0;	//加了几个空格
+//					for (int q = 0; q < h; q++) {
+//						array.get(h).append(" ");
+//						space++;
+//					}
+//					
+//					//添加第一个X
+//					array.get(h).append("X");
+//					
+//					//添加第二段空格
+//					for (int k = 0; k < inputA[i] - 2 - space - h; k++) {
+//						array.get(h).append(" ");
+//					}
+//					
+//					//添加第二个X
+//					array.get(h).append("X");
+//				} else if (h > inputA[i] / 2) {
+//					//添加第一段空格
+//					int space = 0;	//加了几个空格
+//					for (int q = 0; q < array.size() - h; q++) {
+//						array.get(h).append(" ");
+//						space++;
+//					}
+//					
+//					//添加第一个X
+//					array.get(h).append("X");
+//					
+//					//添加第二段空格
+//					for (int k = 0; k < inputA[i] - 2 - space - 1; k++) {
+//						array.get(h).append(" ");
+//					}
+//					
+//					//添加第二个X
+//					array.get(h).append("X");
+//				} else if (h == inputA[i] / 2) {
+//					//添加第一段空格
+//					for (int k = 0; k < h; k++) {
+//						array.get(h).append(" ");
+//					}
+//					
+//					array.get(h).append("X");
+//				}
+//			}
+//			
+//			for (char c : arrayOne) {
+//				System.out.print(c);
+//			}
+//
+//			for (StringBuilder stringBuilder : array) {
+//				System.out.println(stringBuilder);
+//			}
+//			System.out.println();
+//		}
+//		
+//		
+//		for (int p = 0; p < n; p++) {
+//			PrintDNA(inputA[p], inputB[p]);
+//			System.out.println();
+//		}
+//	}
+//	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//	public static void PrintDNA(int a, int b) {
+//		
+//		ArrayList<StringBuilder> array = new ArrayList<>();
+//		
+//		for (int i = 0; i < a; i++) {
+//			array.add(new StringBuilder());
+//		}
+//		
+//		//重复
+//		for (int i = 1; i < b; i++) {
+//			for (int k = 0; k < a - 1; k++) {
+//				array.add(new StringBuilder());
+//			}
+//		}
+//		
+//		//填充空格
+//		for (int i = 0; i < array.size(); i++) {
+//			for (int j = 0; j < a; j++) {
+//				array.get(i).append(' ');
+//			}
+//		}
+//		
+//		//打印DNA
+//		int j = 0;
+//		for (int i = 0; i < array.size(); i++) {
+//			array.get(i).setCharAt(j, 'X');
+//			array.get(i).setCharAt(array.get(i).length() - j - 1, 'X');
+//			j++;
+//			for (int z = 1; z <= 20; z++) {
+//				if (i == a * z - 1) {
+//					j = 0;
+//				}
+//			}
+//		}
+//		
+//		for (StringBuilder stringBuilder : array) {
+//			System.out.println(stringBuilder);
+//		}
+//	}
+//}

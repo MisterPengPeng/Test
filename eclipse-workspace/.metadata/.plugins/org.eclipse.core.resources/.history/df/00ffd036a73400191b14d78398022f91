@@ -1,0 +1,121 @@
+package breadthFirstSearch;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+/*
+** 卡片换位 ** 2016年蓝桥杯省赛C语言C组
+
+你玩过华容道的游戏吗？ 
+这是个类似的，但更简单的游戏。 
+看下面 3 x 2 的格子
+
++ - + - + - +
+| A | * | * |
++ - + - + - +
+| B |   | * |
++ - + - + - +
+
+在其中放5张牌，其中A代表关羽，B代表张飞，* 代表士兵。 
+还有一个格子是空着的。
+
+你可以把一张牌移动到相邻的空格中去(对角不算相邻)。 
+游戏的目标是：关羽和张飞交换位置，其它的牌随便在哪里都可以。
+
+输入格式： 
+输入两行6个字符表示当前的局面
+
+输出格式： 
+一个整数，表示最少多少步，才能把AB换位（其它牌位置随意）
+
+例如，输入： 
+* A 
+**B
+
+程序应该输出： 
+17
+
+再例如，输入： 
+A B 
+***
+
+程序应该输出： 
+12
+
+资源约定： 
+峰值内存消耗 < 256M 
+CPU消耗 < 1000ms
+*/
+public class CardTransposition {
+	
+	static class Node {
+		String string;
+		int step;
+		int indexA;
+		int indexB;
+		int spacePosition;
+		
+		public Node(String string, int step, int indexA, int indexB, int spacePosition) {
+			this.string = string;
+			this.step = step;
+			this.indexA = indexA;
+			this.indexB = indexB;
+			this.spacePosition = spacePosition;
+		}
+	}
+	
+	static TreeSet<String> book = new TreeSet<String>();
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		String first = scanner.nextLine();
+		String second = scanner.nextLine();
+		
+		scanner.close();
+
+		String start = first.trim() + second.trim();
+		int startAindex = swapAB(start) / 10;
+		int startBindex = swapAB(start) % 10;
+		int endAIndex = swapAB(start) % 10;
+		int endBIndex = swapAB(start) / 10;
+		
+		int spacePosition = 0;
+		for (int i = 0; i < start.length(); i++) {
+			if (start.charAt(i) == ' ') {
+				spacePosition = i;
+			}
+		}
+		Queue<Node> queue = new LinkedList<Node>();
+		queue.add(new Node(start, 0, startAindex, startBindex));
+		book.add(start);
+		
+		while (!queue.isEmpty()) {
+			Node currentNode = queue.remove();
+			
+			
+			if (currentNode.indexA == endAIndex && currentNode.indexB == endBIndex) {
+				System.out.println(currentNode.step);
+				return;
+			}
+			
+			if ()
+		}
+	}
+	
+	public static int swapAB(String start) {
+		StringBuilder stringBuilder = new StringBuilder(start);
+		int indexA = 0;
+		int indexB = 0;
+		for (int i = 0; i < stringBuilder.length(); i++) {
+			if (stringBuilder.charAt(i) == 'A') {
+				indexA = i;
+			} else if (stringBuilder.charAt(i) == 'B') {
+				indexB = i;
+			}
+		}
+		return indexA * 10 + indexB;
+	}
+}

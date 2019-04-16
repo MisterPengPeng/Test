@@ -1,0 +1,55 @@
+package itemBank;
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class ExaminationRoom {
+	
+	static int[] result;
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		int n = in.nextInt();
+		int m = in.nextInt();
+		result = new int[n];
+		for (int i = 0; i < m; i++) {
+			result[i] = in.nextInt();
+		}
+		
+		int a;
+		int b;
+		for (int i = 0; i < m; i++) {
+			a = in.nextInt();
+			b = in.nextInt();
+			u(a, b);
+		}
+		
+		in.close();
+		
+		Set<Integer> set = new HashSet<Integer>();
+		for (int i = 0; i < n; i++) {
+			set.add(f(i));
+		}
+	}
+
+	private static void u(int a, int b) {
+		int tA = f(a);
+		int tB = f(b);
+		
+		if (tA == tB) {
+			return;
+		}
+		
+		result[tA] = tB;
+	}
+	
+	private static int f(int i) {
+		if (result[i] == i) {
+			return i;
+		}
+		
+		return result[i] = f(result[i]);
+	}
+}

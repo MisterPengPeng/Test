@@ -1,0 +1,71 @@
+package demo;
+
+import java.util.Scanner;
+
+
+/*
+4. 链表
+实现一个保存int数据的链表，使它支持以下7个函数/方法
+(1) void push_front(int x)	-- 插入一个新数据到链表头
+(2) void push_back(int x)	-- 插入一个新数据到链表尾
+(3) int pop_front()			-- 删除链表头处的数据，并将该数据返回
+(4) int pop_back()			-- 删除链表尾处的数据，并将该数据返回
+(5) int get_front()			-- 返回链表头处的数据；不会修改链表内的任何元素
+(6) int get_back()			-- 返回链表尾处的数据；不会修改链表内的任何元素
+(7) void print()			-- 从头到尾打印链表中的所有元素，元素间用“,”分隔
+*/
+public class Main {
+	public static void main(String[] args) {
+		char[] a = new char[101];
+		char[] s = new char[101];
+		int next = 0;
+		Scanner scanner = new Scanner(System.in);
+		
+		String temp = scanner.next();
+		a = temp.toCharArray();
+		int length = temp.length();
+		int mid = length / 2 - 1;
+		
+		int top = 0;
+		for (int i = 0; i <= mid; i++) {
+			s[++top] = a[i];
+		}
+		
+		if (length % 2 == 0) {
+			next = mid + 1;
+		} else {
+			next = mid + 2;
+		}
+		
+		for (int i = next; i <= length - 1; i++) {
+			if (a[i] != s[top]) {
+				break;
+			}
+			top--;
+		}
+		
+		if (top == 0) {
+			System.out.println("YES");
+		} else {
+			System.out.println("NO");
+		}
+//		Linked linked = new Linked();
+//		
+//		linked.createLinkedList();
+//		linked.print();
+//		linked.push_front(1);
+//		linked.print();
+//		linked.push_front(2);
+//		linked.print();
+//		linked.push_back(3);
+//		linked.print();
+//		System.out.println(linked.get_front());
+//		linked.print();
+//		System.out.println(linked.get_back());
+//		linked.print();
+//		System.out.println(linked.pop_front());
+//		linked.print();
+//		System.out.println(linked.pop_back());
+//		linked.print();
+	}
+}

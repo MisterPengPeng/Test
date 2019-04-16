@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="LanQiao"/>
+	<classpathentry kind="src" path="LanQiaoFifth"/>
+	<classpathentry kind="src" path="LanQiaoSixth"/>
+	<classpathentry kind="src" path="LanQiaoSeventh"/>
+	<classpathentry kind="src" path="LanQiaoEighth"/>
+	<classpathentry kind="src" path="LanQiaoSeventhFinals"/>
+	<classpathentry kind="src" path="LanQiaoSixthFinals"/>
+	<classpathentry kind="src" path="LanQiaoEighthFinals"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

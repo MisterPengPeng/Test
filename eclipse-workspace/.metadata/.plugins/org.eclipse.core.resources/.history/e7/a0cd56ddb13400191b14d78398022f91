@@ -1,0 +1,126 @@
+package breadthFirstSearch;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+import com.sun.org.apache.xml.internal.security.Init;
+
+/*
+** 分红酒 **
+
+有4个红酒瓶子，它们的容量分别是：9升, 7升, 4升, 2升
+开始的状态是 [9,0,0,0]，也就是说：第一个瓶子满着，其它的都空着。
+允许把酒从一个瓶子倒入另一个瓶子，但只能把一个瓶子倒满或把一个瓶子倒空，不能有中间状态。这样的一次倒酒动作称为1次操作。
+假设瓶子的容量和初始状态不变，对于给定的目标状态，至少需要多少次操作才能实现？
+本题就是要求你编程实现最小操作次数的计算。
+输入
+最终状态（逗号分隔）
+输出
+最小操作次数（如无法实现，则输出-1）
+样例输入1：
+9,0,0,0
+样例输出1：
+0
+样例输入2：
+6,0,0,3
+样例输出2：
+-1
+样例输入3：
+7,2,0,0
+样例输出3：
+2
+*/
+public class ShareWine {
+	
+	static class Node implements Comparable<Node>{
+		int[] state;
+		int step;
+		
+		public Node(int[] state, int step) {
+			this.state = state;
+			this.step = step;
+		}
+
+		@Override
+		public int compareTo(Node o) {
+			for (int i = 0; i < o.state.length; i++) {
+				if (o.state[i] > this.state[i]) {
+					return o.state[i] - this.state[i];
+				} else if (o.state[i] < this.state[i]) {
+					return this.state[i] - o.state[i];
+				}
+			}
+			return 0;
+		}
+		
+	}
+	
+	static TreeSet<int[]> book = new TreeSet<>();
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		String input = scanner.nextLine();
+		
+		scanner.close();
+		
+		char[] temp = input.toCharArray();
+		int[] destinationState = new int[4];
+		for (int i = 0, j = 0; i < temp.length && j < 4; i++) {
+			if (temp[i] != ',') {
+				destinationState[j] = temp[i] - '0';
+				j++;
+			}
+		}
+		
+		Queue<Node> queue = new LinkedList<Node>();
+		queue.add(new Node(new int[]{9, 0, 0, 0}, 0));
+		book.add(new int[] {9, 0, 0, 0});
+		
+		while (!queue.isEmpty()) {
+			Node currentNode = queue.remove();
+			
+			if (equals(currentNode.state, destinationState)) {
+				System.out.println(currentNode.step);
+				return;
+			}
+			
+			int[] nextState = new int[4];
+			
+			//0
+			nextState = 
+			
+			//1
+			
+			
+			//2
+			
+			
+			//3
+			
+		}
+	}
+	
+	public static int[] copyIntArr(int[] sourceArr, int[] targetArr) {
+		for (int i = 0; i < 4; i++) {
+			targetArr[i] = sourceArr[i];
+		}
+	}
+	
+	public static boolean equals(int[] source, int[] destination) {
+		int sourceLength = source.length;
+		int destinationLength = destination.length;
+		for (int i = 0; i < source.length; i++) {
+			if (source[i] != destination[i]) {
+				return false;
+			}
+		}
+		if (sourceLength != destinationLength) {
+			return false;
+		}
+		
+		return true;
+	}
+}

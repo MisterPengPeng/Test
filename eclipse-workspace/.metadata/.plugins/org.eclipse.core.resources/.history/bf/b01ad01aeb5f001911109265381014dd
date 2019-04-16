@@ -1,0 +1,31 @@
+package itemBank;
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class MatchMatch {
+	
+	static int N;
+	static int K;
+	static int[] score;
+	static int max = 1;
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		N = in.nextInt();
+		K = in.nextInt();
+		score = new int[N + 1];
+		for (int i = 1; i <= N; i++) {
+			score[i] = in.nextInt();
+		}
+		
+		in.close();
+		
+		
+	}
+	
+	public static void f(int index) {
+		
+	}
+}

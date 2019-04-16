@@ -1,0 +1,22 @@
+package itemBank;
+
+import java.util.Scanner;
+
+public class MatchMatch {
+	
+	static int N;
+	static int K;
+	static int[] integral;
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		N = in.nextInt();
+		K = in.nextInt();
+		integral = new int[N + 1];
+		for (int i = 1; i <= N; i++) {
+			integral[i] = in.nextInt();
+		}
+		
+	}
+}

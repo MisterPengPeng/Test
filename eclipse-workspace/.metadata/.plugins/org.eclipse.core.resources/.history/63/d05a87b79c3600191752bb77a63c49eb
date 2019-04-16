@@ -1,0 +1,16 @@
+package breadthFirstSearch;
+
+/*
+ * 物品名称			重量			价值
+ * 98k				50			300
+ * m4				30			150
+ * 98k bullet		30			100
+ * handgun			10			80
+ * pot				15			400
+ * medicine			25			450
+ * antitank grenade	5			50*/
+public class Main {
+	public static void main(String[] args) {
+		
+	}
+}

@@ -1,0 +1,23 @@
+package demo;
+
+import java.util.Scanner;
+
+public class AdditionOfLargeNumber {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		String strA = scanner.next();
+		String strB = scanner.next();
+		
+		scanner.close();
+		
+		char[] a = new char[1000];
+		char[] b = new char[1000];
+		a =  strA.toCharArray();
+		b = strA.toCharArray();
+		
+		for (int i = a.length, j = b.length; i >= 0; i--, j--) {
+			
+		}
+	}
+}

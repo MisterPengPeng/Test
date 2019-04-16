@@ -1,0 +1,21 @@
+package breadthFirstSearch;
+
+
+
+public class Main {
+	public static void main(String[] args) {
+		int[] a = {9, 3, 5, 2};
+		int temp = changeToInt(a);
+		System.out.println(temp);
+	}
+	
+	public static int changeToInt(int[] array) {
+		int unit = 1000;
+		int number = 0;
+		for (int i = 0; i < array.length; i++) {
+			number = array[i] * unit;
+			unit /= 10;
+		}
+		return number;
+	}
+}

@@ -1,0 +1,111 @@
+package demo;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+	static class TreeNode {
+		public String data;
+		public ArrayList<TreeNode> kids;
+		public TreeNode parent;
+	}
+
+	static TreeNode root;
+	static int N;
+
+	public static void create() {
+		Scanner sc = new Scanner(System.in);
+		
+		N = sc.nextInt();
+		int M = sc.nextInt();
+		sc.nextLine();
+
+		String str = sc.nextLine();
+		root = new TreeNode();
+		root.data = str;
+
+		TreeNode p = root;
+		int pDepth = 0;
+		
+		for (int i = 1; i < M; i++) {
+			String input = sc.nextLine();
+			int pathStartIdx = 0;
+			for (pathStartIdx = 0; pathStartIdx < input.length(); pathStartIdx++) {
+				if (input.charAt(pathStartIdx) != '-') {
+					break;
+				}
+			}
+			int depth = pathStartIdx;
+			String path = input.substring(depth);
+			
+			if (depth > pDepth) {
+				TreeNode temp = new TreeNode();
+				temp.data = path;
+				temp.parent = p;
+				
+				if (p.kids == null) {
+					p.kids = new ArrayList<TreeNode>();
+				}
+				p.kids.add(temp);
+				
+				p = temp;
+				pDepth++;
+			} else {
+				int targetDepth = depth - 1;
+				while (pDepth != targetDepth) {
+					p = p.parent;
+					pDepth--;
+				}
+				
+				TreeNode temp = new TreeNode();
+				temp.data = path;
+				temp.parent = p;
+				
+				if (p.kids == null) {
+					p.kids = new ArrayList<TreeNode>();
+				}
+				p.kids.add(temp);
+				
+				p = temp;
+				pDepth++;
+			}
+		}
+		sc.close();
+	}
+	
+	static void printPath(int depth, ArrayList<String> arr) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i <= depth; i++) {
+			sb.append(arr.get(i));
+			if (i != depth) {
+				sb.append('\\');
+			}
+		}
+		if (sb.length() > N) {
+			System.out.println(sb);
+		}
+	}
+	
+	static void printNode(TreeNode node, int depth, ArrayList<String> arr) {
+		arr.add(depth, node.data);
+		if (node.kids == null || node.kids.isEmpty()) {
+			printPath(depth, arr);
+			return;
+		}
+		for (int i = 0; i < node.kids.size(); i++) {
+			TreeNode next = node.kids.get(i);
+			printNode(next, depth + 1, arr);
+		}
+	}
+	
+	public static void print() {
+		ArrayList<String> arr = new ArrayList<String>();
+		printNode(root, 0, arr);
+	}
+
+	public static void main(String[] args) {
+		create();
+		print();
+		return;
+	}
+}

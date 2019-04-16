@@ -1,0 +1,16 @@
+package unionFindSets;
+
+import java.util.Scanner;
+
+public class RoadRepair {
+	
+	static int numberOfVertexes;		//有几个点
+	static int numberOfRoads;			//有几条已知连接的路
+	static int[] result;
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		numberOfVertexes = in.nextInt();
+	}
+}

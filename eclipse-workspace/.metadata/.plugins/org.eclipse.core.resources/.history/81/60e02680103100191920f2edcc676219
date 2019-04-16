@@ -1,0 +1,11 @@
+package demo;
+
+public class Main {
+	public static void main(String[] args) {
+		Linked linked = new Linked();
+		
+		linked.push_front(1);
+		linked.push_front(2);
+		linked.print();
+	}
+}

@@ -1,0 +1,49 @@
+package itemBank;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class RootedPlant {
+	
+	static int m;		//格子的行数
+	static int n;		//格子的列数
+	static int k;		//接下来有k行数据, 每行两个数a, b代表编号为a的格子和编号为b的格子里的植物合根了
+	static int[][] relationships;		//根之间的关系
+	static ArrayList<String> data = new ArrayList<String>();		//存放结果
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		m = in.nextInt();
+		n = in.nextInt();
+		k = in.nextInt();
+		relationships = new int[k][2];
+		for (int i = 0; i < k; i++) {
+			relationships[i][0] = in.nextInt();
+			relationships[i][1] = in.nextInt();
+		}
+		
+		in.close();
+		
+		for (int i = 1; i <= m * n; i++) {
+			data.add(new String(i + ", "));
+		}
+		
+		for (int i = 0; i < relationships.length; i++) {
+			int a = relationships[i][0];
+			int b = relationships[i][1];
+			for (int j = 0; j < data.size(); j++) {
+				if (data.get(j).indexOf(a + "") != -1) {
+					for (int k = 0; k < data.size(); k++) {
+						if (data.get(k).indexOf(b + "") != -1) {
+							data.set(j, data.get(j) + data.get(k));
+							data.remove(k);
+						}
+					}
+				}
+			}
+		}
+		
+		System.out.println(data.size());
+	}
+}

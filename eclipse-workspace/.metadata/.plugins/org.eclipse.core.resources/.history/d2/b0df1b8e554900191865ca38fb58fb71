@@ -1,0 +1,35 @@
+package demo;
+
+import java.util.Scanner;
+
+/*
+问题： 
+一个人买汽水，一块钱一瓶汽水，三个瓶盖可以换一瓶汽水，两个空瓶可以换一瓶汽水 
+问20块钱可以买多少汽水？
+*/
+public class BuySoda {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		int money = in.nextInt();
+		
+		in.close();
+		f(money, money, money);
+	}
+	
+	public static void f(int bottle, int cap, int total) {
+		if (bottle < 2 && cap < 3) {
+			System.out.println(total);
+			return;
+		}
+		int newSoda = 0;		//新换了几瓶汽水
+		newSoda += bottle / 2;	//两个瓶身换一瓶, 除以二
+		newSoda += cap / 3;		//三个瓶盖换一瓶, 除以三
+		bottle %= 2;			//瓶身换了之后还剩几个瓶身
+		cap %= 3;				//瓶盖换了之后还剩几个瓶盖
+		total += newSoda;		//已经换过的汽水再加上新换的汽水
+		bottle += newSoda;		//又得到了新的瓶身和瓶盖
+		cap += newSoda;
+		f(bottle, cap, total);
+	}
+}

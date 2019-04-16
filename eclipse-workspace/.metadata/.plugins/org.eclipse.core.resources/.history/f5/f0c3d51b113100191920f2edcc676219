@@ -1,0 +1,102 @@
+package demo;
+
+
+/*
+4. 链表
+实现一个保存int数据的链表，使它支持以下7个函数/方法
+(1) void push_front(int x)	-- 插入一个新数据到链表头
+(2) void push_back(int x)	-- 插入一个新数据到链表尾
+(3) int pop_front()			-- 删除链表头处的数据，并将该数据返回
+(4) int pop_back()			-- 删除链表尾处的数据，并将该数据返回
+(5) int get_front()			-- 返回链表头处的数据；不会修改链表内的任何元素
+(6) int get_back()			-- 返回链表尾处的数据；不会修改链表内的任何元素
+(7) void print()			-- 从头到尾打印链表中的所有元素，元素间用“,”分隔
+*/
+public class Linked {
+	static class Node {
+		int data;
+		Node next;
+	}
+	
+	static Node headNode;
+	
+	
+	//插入一个新数据到链表头
+	public void push_front(int x) {
+		Node node = new Node();
+		node.data = x;
+		node.next = headNode;
+		headNode = node;
+	}
+	
+	//插入一个新数据到链表尾
+	public void push_back(int x) {
+		Node temp = new Node();
+		temp = headNode;
+		while (true) {
+			if (temp.next == null) {
+				Node node = new Node();
+				node.data = x;
+				node.next = null;
+				temp.next = node;
+				return;
+			}
+			temp = temp.next;
+		}
+	}
+	
+	//删除链表头处的数据, 并将该数据返回
+	public int pop_front() {
+		Node temp = new Node();
+		temp = headNode;
+		headNode = headNode.next;
+		return temp.data;
+	}
+	
+	//删除链表尾处的数据, 并将该数据返回
+	public int pop_back() {
+		Node temp = new Node();
+		temp = headNode;
+		while (true) {
+			if (temp.next == null) {
+				Node node = new Node();
+				node = temp;
+				temp = null;
+				return node.data;
+			}
+			temp = temp.next;
+		}
+	}
+	
+	//返回链表头处的数据, 不会修改链表内的任何元素
+	public int get_front() {
+		return headNode.data;
+	}
+	
+	//返回链表尾处的数据, 不会修改链表内的任何元素
+	public int get_back() {
+		Node temp = new Node();
+		temp = headNode;
+		while (true) {
+			if (temp.next == null) {
+				return temp.data;
+			}
+			temp = temp.next;
+		}
+	}
+
+	//从头到尾打印链表中的所有元素, 元素间用","分隔
+	public void print() {
+		Node temp = new Node();
+		temp = headNode;
+		while (true) {
+			if (temp.next == null) {
+				System.out.println(temp.data);
+				return;
+			} else {
+				System.out.print(temp.data + ",");
+				temp = temp.next;
+			}
+		}
+	}
+}

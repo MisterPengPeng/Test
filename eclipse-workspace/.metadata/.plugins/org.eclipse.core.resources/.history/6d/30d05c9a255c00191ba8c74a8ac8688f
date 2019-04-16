@@ -1,0 +1,9 @@
+package itemBank;
+
+import java.util.Scanner;
+
+public class ExaminationRoom {
+	public static void main(String[] args) {
+		
+	}
+}
